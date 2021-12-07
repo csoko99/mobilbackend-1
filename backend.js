@@ -37,6 +37,33 @@ app.get('/tipus', (req, res) => {
 
 
   
+})
+
+
+
+  app.get('/marka', (req, res) => {
+
+    var mysql = require('mysql')
+    var connection = mysql.createConnection({
+      host: 'localhost',
+      user: 'root',
+      password: '',
+      database: 'autozarodoga'
+    })
+    
+    connection.connect()
+    
+    connection.query('SELECT * from marka', function (err, rows, fields) {
+      if (err) throw err
+    
+      console.log(rows)
+      res.send(rows)
+    })
+    
+    connection.end()
+
+
+  
   })
 
 
