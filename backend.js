@@ -14,6 +14,10 @@ app.get('/', (req, res) => {
 })
 
 
+
+
+
+
 app.get('/tipus', (req, res) => {
 
     var mysql = require('mysql')
@@ -67,14 +71,14 @@ app.get('/tipus', (req, res) => {
   })
 
 
-  /*app.post('/szavazatfelvitel', (req, res) => {
+  /*app.post('/marka', (req, res) => {
 
     var mysql = require('mysql')
     var connection = mysql.createConnection({
       host: 'localhost',
       user: 'root',
       password: '',
-      database: 'marveladatb'
+      database: 'autozarodoga'
     })
     
     connection.connect()
@@ -82,8 +86,8 @@ app.get('/tipus', (req, res) => {
     connection.query('insert into szavazat values (null, '+req.body.bevitel1+' )', function (err, rows, fields) {
       if (err) throw err
     
-      console.log("Szavazatát rögzítettük!")
-      res.send("Szavazatát rögzítettük!")
+      console.log(rows)
+      res.send(rows)
     })
     
     connection.end()
