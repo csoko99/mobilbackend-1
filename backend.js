@@ -45,7 +45,7 @@ app.get('/tipus', (req, res) => {
 
 
 
-  app.get('/marka', (req, res) => {
+  app.get('/mindenadat', (req, res) => {
 
     var mysql = require('mysql')
     var connection = mysql.createConnection({
@@ -57,7 +57,7 @@ app.get('/tipus', (req, res) => {
     
     connection.connect()
     
-    connection.query('SELECT * from marka', function (err, rows, fields) {
+    connection.query('SELECT * FROM `marka` INNER JOIN tipus ON marka.marka_id=tipus.tipus_id', function (err, rows, fields) {
       if (err) throw err
     
       console.log(rows)
@@ -71,8 +71,10 @@ app.get('/tipus', (req, res) => {
   })
 
 
-  /*app.post('/marka', (req, res) => {
+    app.post('/nissan', (req, res) => {
 
+
+      
     var mysql = require('mysql')
     var connection = mysql.createConnection({
       host: 'localhost',
@@ -83,7 +85,7 @@ app.get('/tipus', (req, res) => {
     
     connection.connect()
     
-    connection.query('insert into szavazat values (null, '+req.body.bevitel1+' )', function (err, rows, fields) {
+    connection.query('SELECT * FROM autok where tipus_marka= '+req.body.bevitel1+' )', function (err, rows, fields) {
       if (err) throw err
     
       console.log(rows)
@@ -94,7 +96,7 @@ app.get('/tipus', (req, res) => {
 
 
   
-  })*/
+  })
 
 
 
